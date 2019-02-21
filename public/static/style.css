@@ -1,0 +1,195 @@
+
+
+body {
+    font-family: 'Oswald', sans-serif;
+}
+
+#header {
+    height: 40%;
+    background-color: rgb(37, 35, 49);
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    
+}
+.header-option {
+    transition: background-color 0.5s ease;
+    height: 40%;
+    text-align: center;
+    display: inline-block;
+    margin: 1%;
+    font-size: 30px;
+    border: 5% static rgb(37, 35, 49);
+}
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.header-option:hover {
+    background-color: rgb(60, 57, 78);
+    border: 1% static rgb(60, 57, 78);
+} 
+#welcome {
+    text-align: center;
+    font-size: 72px;
+    margin: 0px;
+    margin-top: 20vh;
+}
+#ymn {
+    text-align: center;
+    font-size: 40;
+    margin: 0px;
+}
+a {
+ text-decoration: none;
+ color: white;
+}
+
+#login-msg {
+    text-align: center;
+    font-size: 72px;
+    margin: 0px;
+    margin-top: 1vh;
+}
+#login-box {
+    margin-top: 5vh;
+    text-align: center;
+    background-color: rgb(39, 36, 56);
+    width: 20vw;
+    height: 60vh;
+    margin: auto;
+}
+.input-box {
+    width: 15vw;
+    height: 5vh;
+    border: 3px solid rgb(37, 35, 49);
+    border-radius: 7px;
+    text-align: center;
+    font-size: 30px;
+    margin: 1vh;
+}
+.input-box::placeholder {
+    font-size: 20px;
+}
+
+#Login-btn {
+    transition: background-color 0.5s ease;
+    margin-top: 5vh;
+    border: none; 
+    background-color: rgb(60, 57, 78);
+    border-radius: 7px;
+    text-align: center;
+    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+    color: rgb(248, 248, 250);
+}
+#Login-btn:hover {
+    background-color: rgb(77, 73, 104);
+}
+#Login-btn:active {
+    background-color: rgb(110, 105, 143);
+}
+.noblueborder:focus {
+    outline: none;
+}
+
+#Register-btn {
+    transition: background-color 0.5s ease;
+    margin-top: 5vh;
+    border: none; 
+    background-color: rgb(60, 57, 78);
+    border-radius: 7px;
+    text-align: center;
+    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+    color: rgb(248, 248, 250);
+}
+#Register-btn:hover {
+    background-color: rgb(77, 73, 104);
+}
+#Register-btn:active {
+    background-color: rgb(110, 105, 143);
+}
+
+#Register-box {
+    margin-top: 5vh;
+    text-align: center;
+    background-color: rgb(39, 36, 56);
+    width: 20vw;
+    height: 60vh;
+    margin: auto;
+}
+
+#error-box {
+    color: rgb(255, 6, 6);
+}
+
+#drag-bar {
+    -webkit-user-select: none;
+    -ms-overflow-style: scrollbar;
+    -webkit-app-region:drag;
+    height: 5vh;
+    text-align: right;
+    background-color: rgb(7, 6, 8);
+}
+
+.db-button {
+    -webkit-app-region: no-drag;
+    height: 1.5vw;
+    width: 1.5vw;
+    border-radius: 40%;
+    border: 5px static white;
+    background-color: rgb(44, 43, 46);
+    float: right;
+    margin: 0.2vw;
+    -webkit-transition: background-color 0.2s, width 0.2s, border-radius 0.2s, height 0.2s;
+}
+
+#minimize:hover {
+    background-color: #D1AC00;
+    width: 2vw; 
+    height: 2vw;   
+    border-radius: 25px;
+}
+#maximize:hover {
+    background-color: #00815F;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 25px;
+}
+
+#close:hover {
+    background-color: #A21C46;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 25px;
+}
+
+#minimize:active {
+    background-color: rgb(253, 207, 0);
+    width: 2vw;
+}
+#maximize:active {
+    background-color: rgb(8, 223, 165);
+    width: 2vw;
+}
+#close:active {
+    background-color: rgb(209, 35, 90);
+    width: 2vw;
+}
+
+#home-logo-box {
+    text-align: center;
+}
+
+#homelogo {
+    position: absolute;
+    left: 30vw;
+    width: 40vw;
+}

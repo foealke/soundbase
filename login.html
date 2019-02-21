@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="public/static/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+</head>
+<body style="margin: 0;">
+    <div id="drag-bar">
+        <div class="db-button"  id="close"></div>
+        <div class="db-button" id="maximize"></div>
+        <div class="db-button" id="minimize"></div>
+    </div>
+    <header id="header" class="unselectable">
+        <div id="home" class="header-option unselectable"><a href="home.html">Strona główna</a></div>
+        <div id="register" class="header-option unselectable"><a href="register.html">Zarejestruj się</a></div>
+        <div id="login" class="header-option unselectable"><a href="login.html">Zaloguj</a></div>
+    </header>
+    <h1 id="login-msg">Login</h1>
+    <div id="login-box">
+        <input placeholder="email" type="email" name="" id="email-input" class="input-box unselectable noblueborder"> <br>
+        <input placeholder="password" type="password" name="" id="password-input" class="input-box unselectable noblueborder"> <br>
+        <input class="noblueborder" type="button" value="Login" id="Login-btn" >
+    </div>
+
+    <script src="./public/static/dragbar.js"></script>
+</body>
+</html>
