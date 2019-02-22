@@ -3,10 +3,6 @@ const inputPassword = document.querySelector('#register-password-input')
 const regBtn = document.querySelector('#Register-btn')
 
 
-function registerNewUser(email, password) {
-
-}
-
 
 
 regBtn.addEventListener('click', () => {

@@ -1,7 +1,9 @@
 
 
 body {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto 300', sans-serif;
+    font-weight: 300;
+    
 }
 
 #header {
@@ -134,15 +136,16 @@ a {
     -webkit-user-select: none;
     -ms-overflow-style: scrollbar;
     -webkit-app-region:drag;
-    height: 5vh;
+    height: 4vh;
     text-align: right;
-    background-color: rgb(7, 6, 8);
+    background-color: rgb(255, 255, 255);
 }
+
 
 .db-button {
     -webkit-app-region: no-drag;
-    height: 1.5vw;
-    width: 1.5vw;
+    height: 1vw;
+    width: 1vw;
     border-radius: 40%;
     border: 5px static white;
     background-color: rgb(44, 43, 46);
@@ -151,37 +154,25 @@ a {
     -webkit-transition: background-color 0.2s, width 0.2s, border-radius 0.2s, height 0.2s;
 }
 
-#minimize:hover {
-    background-color: #D1AC00;
-    width: 2vw; 
-    height: 2vw;   
-    border-radius: 25px;
+#minimize {
+    background-color: rgb(253, 207, 0); 
 }
-#maximize:hover {
-    background-color: #00815F;
-    width: 2vw;
-    height: 2vw;
-    border-radius: 25px;
+#maximize {
+    background-color: rgb(8, 223, 165);
 }
 
-#close:hover {
-    background-color: #A21C46;
-    width: 2vw;
-    height: 2vw;
-    border-radius: 25px;
+#close {
+    background-color: rgb(209, 35, 90);
 }
 
 #minimize:active {
-    background-color: rgb(253, 207, 0);
-    width: 2vw;
+    background-color: rgb(253, 211, 23);
 }
 #maximize:active {
-    background-color: rgb(8, 223, 165);
-    width: 2vw;
+    background-color: rgb(9, 245, 182);
 }
 #close:active {
-    background-color: rgb(209, 35, 90);
-    width: 2vw;
+    background-color: rgb(228, 39, 99);
 }
 
 #home-logo-box {
@@ -193,3 +184,5 @@ a {
     left: 30vw;
     width: 40vw;
 }
+
+

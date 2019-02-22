@@ -1,0 +1,55 @@
+#body1 {
+    margin:0 auto;
+    background-color: white;
+    border-radius: 25px;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+
+}
+
+:not(input):not(textarea),
+:not(input):not(textarea)::after,
+:not(input):not(textarea)::before {
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+input, button, textarea, :focus {
+    outline: none; 
+}
+a:not([draggable=true]), img:not([draggable=true]) {
+    -webkit-user-drag: none;
+    user-drag: none; /* Technically not supported in Electron yet */
+}
+a[href^="http://"],
+a[href^="https://"],
+a[href^="ftp://"] {
+    -webkit-user-drag: auto;
+    user-drag: auto; /* Technically not supported in Electron yet */
+}
+
+.purple-gradient {
+    background: -webkit-linear-gradient(45deg, rgb(75, 13, 75) 35%, rgb(245, 29, 245) 65%); /* safari5.1+,chrome10+ */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#ymn {
+    animation-delay: 0.5s;
+}
+
+.log-reg-btn {
+    background: -webkit-linear-gradient(45deg, rgb(131, 35, 131) 35%, rgb(245, 29, 245) 65%); /* safari5.1+,chrome10+ */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 1vh;
+    
+    
+}
+#logreg-box {
+    width: 100vw;
+    margin-top: 5vh;
+    animation-delay: 1s;
+}
+
