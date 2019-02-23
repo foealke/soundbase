@@ -3,7 +3,7 @@
 body {
     font-family: 'Roboto 300', sans-serif;
     font-weight: 300;
-    
+    overflow: hidden;
 }
 
 #header {
@@ -185,4 +185,33 @@ a {
     width: 40vw;
 }
 
+.block {
+    margin: 25px;
+}
 
+.form {
+    border-color: rgb(182, 72, 182);
+    border-width: 1px;
+    animation-delay: 0.4s;
+    background-color: white;
+    width: 20vw;
+    border-radius: 25px;
+    text-align: center;
+}
+
+#login-error {
+    color: red;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+#register-error {
+    color: red;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
