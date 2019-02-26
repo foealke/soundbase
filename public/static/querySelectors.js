@@ -8,6 +8,7 @@ const regerr = document.querySelector('#register-error')
 const loginerr = document.querySelector('#login-error')
 const loginname = document.querySelector('#login-name')
 const loginpassword = document.querySelector('#login-password')
+const logoutbtn = document.querySelector('#logout-href')
 
 // FUNCTIONS
 

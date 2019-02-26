@@ -23,3 +23,7 @@ close.addEventListener("click", (e) => {
     var window = BrowserWindow.getFocusedWindow();
     window.close();
 });
+
+require('electron').remote.getCurrentWindow().on('close', () => {
+    logoutUser()
+})

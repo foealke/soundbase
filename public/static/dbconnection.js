@@ -1,3 +1,5 @@
+var user;
+
 var config = {
     apiKey: "AIzaSyCFOujayYP6VpegOW6Ok6q-JyY9SZlsNM4",
     authDomain: "audiobase-5c02a.firebaseapp.com",
@@ -8,6 +10,12 @@ var config = {
   };
 
 firebase.initializeApp(config);
+
+function redirectToApp() {
+    if ( user != undefined) {
+        window.location.replace("./userProfile.html");
+    }
+}
 
 function errorTranslate(errCode) {
     switch (errCode) {
@@ -48,7 +56,7 @@ function loginError(errCode) {
 }
 
 function registerNewUser(email, password) {
-    firebase.auth().createUserWithEmailAndPassword(email, password).then( res => { console.log(res) }).catch(function(error) {
+    firebase.auth().createUserWithEmailAndPassword(email, password).then( res => { console.log(res); user = firebase.auth().currentUser;}).then( () => { redirectToApp() }).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log('An error has occured! ['+errorCode+']: ' + errorMessage)
@@ -57,10 +65,19 @@ function registerNewUser(email, password) {
 }
 
 function loginUser(email, password) {
-    firebase.auth().signInWithEmailAndPassword(email, password).then( res => { console.log(res) }).catch(function(error) {
+    firebase.auth().signInWithEmailAndPassword(email, password).then( res => { console.log(res); user = firebase.auth().currentUser; }).then( () => { redirectToApp() }).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log('An error has occured! ['+errorCode+']: ' + errorMessage)
         loginError(errorCode)
       });
 }
+
+function logoutUser() {
+    firebase.auth().signOut().then(function() {
+        console.log("[Sign out] User has been logged out")
+      }, function(error) {
+        console.log('[Sign out] There was an error while signing out ! : ' + error)
+      });
+}
+
