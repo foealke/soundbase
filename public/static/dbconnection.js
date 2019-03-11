@@ -1,3 +1,8 @@
+function generateUniqueID() {
+    var d = new Date().valueOf().toString();
+    return d
+}
+
 var user;
 
 var config = {
@@ -16,6 +21,13 @@ function redirectToApp() {
         window.location.replace("./userProfile.html");
     }
 }
+
+
+logoutbtn.addEventListener('click', () => {
+    logoutUser()
+    window.location.replace("./home.html");
+})
+
 
 function errorTranslate(errCode) {
     switch (errCode) {
@@ -55,17 +67,29 @@ function loginError(errCode) {
     animateCss('#login-error','shake')
 }
 
-function registerNewUser(email, password) {
-    firebase.auth().createUserWithEmailAndPassword(email, password).then( res => { console.log(res); user = firebase.auth().currentUser;}).then( () => { redirectToApp() }).catch(function(error) {
+function registerNewUser(name, email, password) {
+    firebase.auth().createUserWithEmailAndPassword(email, password).then( res => { 
+        console.log(res); 
+        user = firebase.auth().currentUser; 
+    }).then( () => { 
+        firebase.auth().currentUser.updateProfile({
+            displayName: name
+        }).then( () => {
+            redirectToApp() 
+        })
+    }).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log('An error has occured! ['+errorCode+']: ' + errorMessage)
         registerError(errorCode)
-      });
+    });
 }
 
 function loginUser(email, password) {
-    firebase.auth().signInWithEmailAndPassword(email, password).then( res => { console.log(res); user = firebase.auth().currentUser; }).then( () => { redirectToApp() }).catch(function(error) {
+    firebase.auth().signInWithEmailAndPassword(email, password).then( res => { 
+        console.log(res); 
+        user = firebase.auth().currentUser; 
+    }).then( () => { redirectToApp() }).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log('An error has occured! ['+errorCode+']: ' + errorMessage)
@@ -81,3 +105,53 @@ function logoutUser() {
       });
 }
 
+var storage = firebase.storage();
+var storageRef = storage.ref();
+var metadata = {
+    contentType: 'audio/mp3'
+};
+var customMetaData = {};
+var uploadTask;
+var metadata = {}
+
+
+function uploadAudioFile(file, description, title, author) {
+    var id = generateUniqueID()
+    metadata = {
+        customMetadata: {
+          'title': title,
+          'description': description,
+          'author': author
+        }
+      }
+    hideUploadElements();
+    uploadTask = firebase.storage().ref('audio/' + id).put(file, metadata);
+    uploadTask.then(function(snapshot) {
+        console.log('Uploaded a blob or file!' + snapshot);
+    });
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, snapshot => {
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        document.querySelector('#upload-progress-bar').style.width = Math.ceil((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toString() + "%"
+        document.querySelector('#upload-progress-bar').innerHTML = Math.ceil((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toString() + "%"
+        console.log('Upload is ' + progress + '% done');
+        if ( Math.ceil((snapshot.bytesTransferred / snapshot.totalBytes) * 100) >= 100) {
+            addSongToDB(description, title, author, 'audio/' + id, id)
+            Swal.fire(
+                'Świetnie!',
+                'Wysyłanie twojego pliku zostało zakończone!',
+                'success'
+            ).then( () => {
+                window.location.replace("./userProfile.html");
+            })
+        }
+    })
+}
+
+function addSongToDB(description, title, author, path, id) {
+    firebase.database().ref('uploadedAudio/' + id).set({
+        description: description,
+        title: title,
+        author: author,
+        path: path
+    });
+}

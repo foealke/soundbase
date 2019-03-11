@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./public/static/animate.css">
     <link rel="stylesheet" href="./public/static/style.css">
+    <link rel="stylesheet" href="./public/static/test.css">
     <link rel="stylesheet" href="./public/static/overall.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
@@ -22,19 +23,27 @@
         <div class="db-button" id="maximize"></div>
         <div class="db-button" id="minimize"></div>
     </div>
-    <div id="home-logo-box">
-        
+    <div class="unselectable" id="menu">
+        <div class="unselectable record-button" id="recordButton">
+            RECORD
+        </div>
+        <div class="unselectable record-button" id="pauseButton">
+            PAUSE
+        </div>
+        <div class="unselectable record-button" id="stopButton">
+            STOP
+        </div>
+        <div id="timer">
+            <div id="time"> 0:00 </div>
+        </div>
     </div>
-    <div class="home-box">
-        <h1 class="animated fadeInUp purple-gradient" id="welcome">WITAJ</h1>
-        <p class="animated 	fadeInUp purple-gradient " id="ymn"> Zaloguj się aby przejść do aplikacji</p>
-        <div id="logreg-box" class="force-center animated fadeInUp">
-            <div id="register" class="unselectable log-reg-btn"><a class="unselectable" href="register.html">Zarejestruj się</a></div>
-            <div id="login" class="unselectable log-reg-btn"><a class="unselectable" href="login.html">Zaloguj</a></div>
-        </div>    
-    </div>
+    
+    <li id="recordingsList"></li>
 </div>
     <script src="./public/static/devMode.js"></script>
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+    <script src="./public/static/functions.js"></script>
+    <script src="./public/static/script.js"></script>
     <script src="./public/static/dragbar.js"></script>
 </body>
 </html>

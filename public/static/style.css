@@ -233,3 +233,61 @@ a {
 .txt-up {
     margin-top: 15vh;
 }
+
+#audio-preview {
+    height: 15vh;
+    margin: 5px auto;
+    margin-top: 1vh;
+    border-radius: 18px;
+    width: 30vw;
+    border: 1px solid rgb(197, 194, 194);
+}
+
+
+#start-preview-btn {
+    font-size: 10vh;
+    margin: 15px auto;
+    border-radius: 18px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(149, 35, 140);
+    -webkit-transition: border 0.5s;
+    width: 10vw;
+}
+
+#title-input {
+    padding: 15px;
+    border-radius: 10px;
+    width: 30vw;
+    border: 1px solid rgb(197, 194, 194);
+}
+
+#upload-description::placeholder {
+    font-size: 20px;
+    color: rgb(177, 177, 177);
+    text-align: center;
+}
+
+#upload-description {
+    padding: 15px;
+}
+
+#upload-button {
+    background-color: white;
+    border-radius: 10px;
+    height: 4vh;
+    border: 1px solid rgb(149, 35, 140);
+    width: 30vw;
+    margin: 15px auto;
+    -webkit-transition: background-color 0.3s;
+}
+
+#upload-button:active {
+   background-color: rgba(195, 9, 180, 0.383);
+}
+
+#upload-progress {
+    margin: 0 auto;
+    width: 30vw;
+    height: 5vh;
+    margin: 10px auto;
+}

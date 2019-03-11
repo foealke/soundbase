@@ -9,6 +9,8 @@ const loginerr = document.querySelector('#login-error')
 const loginname = document.querySelector('#login-name')
 const loginpassword = document.querySelector('#login-password')
 const logoutbtn = document.querySelector('#logout-href')
+const createBtn = document.querySelector('#create')
+const nickname = document.querySelector('#register-nickname')
 
 // FUNCTIONS
 

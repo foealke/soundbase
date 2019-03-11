@@ -3,8 +3,9 @@
 regbtn.addEventListener('click', () => {
     let email = regname.value;
     let password = regpassword.value;
-    if ( email == '' || password == '') {
+    let name = nickname.value;
+    if ( email == '' || password == '' || name == '') {
         return
     }
-    registerNewUser(email, password)
+    registerNewUser(name, email, password)
 })
