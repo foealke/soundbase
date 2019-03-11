@@ -4,14 +4,13 @@
  - Animate.css
  - Bootstrap
  - JS/HTML/CSS
- - Firehost
+ - Firebase
+ - sweetalert2
+ - Microphone.js
 
-Current version (22II2019):
-Build 0.0.3
+Current version (11III2019):
+Build 0.1.2b
 
- - Final Front-end path
- - Almost no back-end
- - No database and models 
- 
+ - Only song browser to make :D
  
  
