@@ -69,7 +69,7 @@ audioPreviewCore.addEventListener('ended', () => {
 document.querySelector('#upload-button').addEventListener('click', () => {
     description = document.querySelector('#upload-description').value
     title = document.querySelector('#title-input').value
-    author = firebase.auth().currentUser.displayName;
+    author = firebase.auth().currentUser.email;
     if (title == "") { 
         title = "No title"
     } 

@@ -12,7 +12,7 @@ var config = {
     projectId: "audiobase-5c02a",
     storageBucket: "audiobase-5c02a.appspot.com",
     messagingSenderId: "31781202721"
-  };
+};
 
 firebase.initializeApp(config);
 
@@ -21,12 +21,6 @@ function redirectToApp() {
         window.location.replace("./userProfile.html");
     }
 }
-
-
-logoutbtn.addEventListener('click', () => {
-    logoutUser()
-    window.location.replace("./home.html");
-})
 
 
 function errorTranslate(errCode) {
@@ -67,15 +61,27 @@ function loginError(errCode) {
     animateCss('#login-error','shake')
 }
 
+var uid;
+var id;
+
 function registerNewUser(name, email, password) {
     firebase.auth().createUserWithEmailAndPassword(email, password).then( res => { 
         console.log(res); 
         user = firebase.auth().currentUser; 
+        uid = firebase.auth().currentUser.uid
+        id = generateUniqueID()
     }).then( () => { 
+        
         firebase.auth().currentUser.updateProfile({
             displayName: name
         }).then( () => {
-            redirectToApp() 
+            firebase.database().ref('users/' + uid).set({
+                displayName: name,
+                uid: uid,
+                id: id,
+                email: email,
+                points: 0,
+            }).then( () => { redirectToApp() } )            
         })
     }).catch(function(error) {
         var errorCode = error.code;
@@ -135,7 +141,7 @@ function uploadAudioFile(file, description, title, author) {
         document.querySelector('#upload-progress-bar').innerHTML = Math.ceil((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toString() + "%"
         console.log('Upload is ' + progress + '% done');
         if ( Math.ceil((snapshot.bytesTransferred / snapshot.totalBytes) * 100) >= 100) {
-            addSongToDB(description, title, author, 'audio/' + id, id)
+            addSongToDB(description, title, author, 'audio/' + id, id, firebase.auth().currentUser.uid)
             Swal.fire(
                 'Świetnie!',
                 'Wysyłanie twojego pliku zostało zakończone!',
@@ -147,11 +153,13 @@ function uploadAudioFile(file, description, title, author) {
     })
 }
 
-function addSongToDB(description, title, author, path, id) {
+function addSongToDB(description, title, author, path, id, authorID) {
     firebase.database().ref('uploadedAudio/' + id).set({
+        authorID: authorID,
         description: description,
         title: title,
         author: author,
-        path: path
+        path: path,
+        points: 0
     });
 }
