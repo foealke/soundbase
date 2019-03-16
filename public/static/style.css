@@ -339,4 +339,19 @@ button:focus {outline:none}
 
 button{
     outline: none !important;
-   }
+}
+
+#song-len {
+    -webkit-transition: width 0.5s;
+}
+
+.song-href-btn {
+    border: 1px solid rgb(149, 35, 140);
+    border-radius: 15px;
+    background-color: white;
+    width: 15vw;
+    height: 5vh;
+    padding: 0vh;
+    text-align: center;
+    float: right;
+}

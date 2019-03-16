@@ -5,6 +5,20 @@ const songAuthor = document.querySelector('#song-author');
 const songDescription = document.querySelector('#desc-box');
 const prevBtn = document.querySelector('#prev-btn');
 const nextBtn = document.querySelector('#next-btn');
+const songBar = document.querySelector('#song-len');
+const timebar = document.querySelector('#time-progress');
+
+function fmtMSS(s){return(s-(s%=60))/60+(9<s?':':':0')+s}
+
+function updateAud() {
+    var a = fmtMSS(Math.floor(songOut.currentTime))
+    var b = fmtMSS(Math.floor(songOut.duration))
+    timebar.innerHTML = a + ' / ' + b
+    var time = Math.floor(songOut.currentTime / songOut.duration * 100 )
+    songBar.style.width = time.toString() + "%"
+}
+
+setInterval( updateAud, 1 )
 
 var isAudioPlaying = false;
 
@@ -64,6 +78,9 @@ function nextSong() {
         songOut.src = url
         nextBtn.disabled = false;
         prevBtn.disabled = false;
+        var a = fmtMSS(Math.floor(songOut.currentTime))
+        var b = fmtMSS(Math.floor(songOut.duration))
+        timebar.innerHTML = a + ' / ' + b
     })
     //songOut.src = getAudioLink();
 }
@@ -80,6 +97,9 @@ function prevSong() {
         songOut.src = url
         nextBtn.disabled = false;
         prevBtn.disabled = false;
+        var a = fmtMSS(Math.floor(songOut.currentTime))
+        var b = fmtMSS(Math.floor(songOut.duration))
+        timebar.innerHTML = a + ' / ' + b
     })
 }   
 
@@ -102,3 +122,9 @@ songOut.onended = function() {
     playBtn.innerHTML = "PLAY"
     isAudioPlaying = false;
 }
+
+// songOut.ontimeupdate = function() {
+//     var time = Math.floor(songOut.currentTime / songOut.duration ) 
+//     songBar.style.width = time.toString() + "%"
+// }
+

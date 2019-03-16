@@ -154,6 +154,7 @@ function uploadAudioFile(file, description, title, author, length) {
 }
 
 function addSongToDB(description, title, author, path, id, authorID, length, authorName) {
+    var idez = generateUniqueID()
     firebase.firestore().collection('uploadedAudio').doc(id).set({
         authorID: authorID,
         description: description,
@@ -163,7 +164,19 @@ function addSongToDB(description, title, author, path, id, authorID, length, aut
         length: length,
         authorName: authorName,
         searchTag: title.toLowerCase(),
-        createdOn: generateUniqueID(),
+        createdOn: idez,
+        points: 0
+    });
+    firebase.database().ref('uploadedAudio/'+id).set({
+        authorID: authorID,
+        description: description,
+        title: title,
+        author: author,
+        path: path,
+        length: length,
+        authorName: authorName,
+        searchTag: title.toLowerCase(),
+        createdOn: idez,
         points: 0
     });
 }
