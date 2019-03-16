@@ -9,6 +9,8 @@ var fileUrl;
 var fileBlob;
 var description;
 var title;
+var fileDuration;
+
 
 uploadInputMusic.addEventListener('change', updateFile)
 
@@ -35,6 +37,7 @@ function updateFile() {
     console.log(typeof(selectedFile))
     console.log(fileUrl)
     console.log(firebase.auth().currentUser)
+    
 }
 
 function millisToMinutesAndSeconds(millis) {
@@ -45,7 +48,7 @@ function millisToMinutesAndSeconds(millis) {
 
 previewBtn.addEventListener('click', playPreview)
 
-
+function fmtMSS(s){return(s-(s%=60))/60+(9<s?':':':0')+s}
 
 function playPreview() {
     if ( isAudioPlaying == false ) {
@@ -70,13 +73,14 @@ document.querySelector('#upload-button').addEventListener('click', () => {
     description = document.querySelector('#upload-description').value
     title = document.querySelector('#title-input').value
     author = firebase.auth().currentUser.email;
+    length = fmtMSS(Math.floor(audioPreviewCore.duration));
     if (title == "") { 
         title = "No title"
     } 
     if ( description == "") {
         description = "No description"
     }
-    uploadAudioFile(selectedFile, description, title, author)
+    uploadAudioFile(selectedFile, description, title, author, length)
 });
 
 function hideUploadElements() {

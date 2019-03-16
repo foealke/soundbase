@@ -1,15 +1,18 @@
 const { app, BrowserWindow } = require('electron')
+var path = require('path')
 
 let mainWindow
 
 function createWindow () {
   mainWindow = new BrowserWindow({
     transparent:true,
-    frame: false,
+    frame: true,
     width: 1280,
     height: 720,
-    minWidth: 1024, 
-    minHeight: 768,
+    minWidth: 1280, 
+    minHeight: 720,
+    title: "SoundBase",
+    icon: path.join(__dirname, 'icon.png'),
     webPreferences: {
       nodeIntegration: true
     }
@@ -18,6 +21,8 @@ function createWindow () {
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
 mainWindow.loadFile('./home.html')
+
+mainWindow.setMenu(null);
 
 mainWindow.on('closed', function () {
     mainWindow = null

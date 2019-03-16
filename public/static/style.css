@@ -1,9 +1,11 @@
 
+body::-webkit-scrollbar { 
+    display: none; 
+}
 
 body {
     font-family: 'Roboto 300', sans-serif;
     font-weight: 300;
-    overflow: hidden;
 }
 
 #header {
@@ -291,3 +293,50 @@ a {
     height: 5vh;
     margin: 10px auto;
 }
+
+.song-box {
+    margin: 20px auto;
+    width: 40vw;
+    height: 30vh;
+    border: 1px solid rgb(149, 35, 140);
+    border-radius: 15px;
+}
+
+#latest-work-box {
+    margin-top: 2vh;
+}
+
+.btn-prev-next {
+    width: 40vw;
+    height: 4vh;
+    border: 1px solid rgb(149, 35, 140);
+    border-radius: 15px;
+    background-color: white;
+}
+
+
+#mainpage-play-btn {
+    border: 1px solid rgb(149, 35, 140);
+    border-radius: 15px;
+    background-color: white;
+    width: 15vw;
+    height: 5vh;
+    padding: 1vh;
+}
+
+#point-btn {
+    border: 1px solid rgb(149, 35, 140);
+    border-radius: 15px;
+    background-color: white;
+    width: 15vh;
+    height: 5vh;
+    padding: 1vh;
+    margin: 15px auto;
+    font-weight: bold;
+}
+
+button:focus {outline:none}
+
+button{
+    outline: none !important;
+   }

@@ -75,7 +75,7 @@ function registerNewUser(name, email, password) {
         firebase.auth().currentUser.updateProfile({
             displayName: name
         }).then( () => {
-            firebase.database().ref('users/' + uid).set({
+            firebase.firestore().collection('users').doc(uid).set({
                 displayName: name,
                 uid: uid,
                 id: id,
@@ -121,7 +121,7 @@ var uploadTask;
 var metadata = {}
 
 
-function uploadAudioFile(file, description, title, author) {
+function uploadAudioFile(file, description, title, author, length) {
     var id = generateUniqueID()
     metadata = {
         customMetadata: {
@@ -141,7 +141,7 @@ function uploadAudioFile(file, description, title, author) {
         document.querySelector('#upload-progress-bar').innerHTML = Math.ceil((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toString() + "%"
         console.log('Upload is ' + progress + '% done');
         if ( Math.ceil((snapshot.bytesTransferred / snapshot.totalBytes) * 100) >= 100) {
-            addSongToDB(description, title, author, 'audio/' + id, id, firebase.auth().currentUser.uid)
+            addSongToDB(description, title, author, 'audio/' + id, id, firebase.auth().currentUser.uid, length, firebase.auth().currentUser.displayName)
             Swal.fire(
                 'Świetnie!',
                 'Wysyłanie twojego pliku zostało zakończone!',
@@ -153,13 +153,18 @@ function uploadAudioFile(file, description, title, author) {
     })
 }
 
-function addSongToDB(description, title, author, path, id, authorID) {
-    firebase.database().ref('uploadedAudio/' + id).set({
+function addSongToDB(description, title, author, path, id, authorID, length, authorName) {
+    firebase.firestore().collection('uploadedAudio').doc(id).set({
         authorID: authorID,
         description: description,
         title: title,
         author: author,
         path: path,
+        length: length,
+        authorName: authorName,
+        searchTag: title.toLowerCase(),
+        createdOn: generateUniqueID(),
         points: 0
     });
 }
+

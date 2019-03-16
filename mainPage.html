@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>SoundBase</title>
     <script src="./public/static/jquerry.js"></script>
+    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
     <!-- <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-auth.js"></script>
@@ -22,24 +23,36 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:500i" rel="stylesheet">
 </head>
 <body style="margin: 0;">
+
 <div id="body1">
-    <div id="drag-bar">
-        <div class="db-button"  id="close"></div>
-        <div class="db-button" id="maximize"></div>
-        <div class="db-button" id="minimize"></div>
-    </div>
+    
     <div style="text-align: left; margin: 15px;" id="logout-btn" class="animated fadeInDown unselectable purple-gradient"> <a href="home.html">Wyloguj</a> </div>
     <div style="text-align: left; margin: 15px;" id="back-to-userProfile" class="animated fadeInDown unselectable purple-gradient"> <a href="userProfile.html">Wróć</a> </div>
     <div id="share-msg" class="animated fadeInUp unselectable purple-gradient" style="font-size: 6vh; width: 30vw; margin: auto; margin-top: 1vh;"> Wyszkaj</div>
     <div style="border-color: rgb(122, 16, 122); width: 40vw; margin: 35px auto;" class="input-group mb-3 animated fadeInUp">
-        <input style="border-color: rgb(122, 16, 122);" type="text" class="form-control" placeholder="Wpisz fraze aby wyszukać" aria-label="Wpisz fraze aby wyszukać " aria-describedby="button-addon2">
+        <input id="search-bar" style="border-color: rgb(122, 16, 122);" type="text" class="form-control" placeholder="Wpisz fraze aby wyszukać" aria-label="Wpisz fraze aby wyszukać " aria-describedby="button-addon2">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" style="border-color: rgb(122, 16, 122);" type="button" id="button-addon2">Szukaj</button>
+          <button id="search-btn" class="btn btn-outline-secondary" style="border-color: rgb(122, 16, 122);" type="button" id="button-addon2">Szukaj</button>
         </div>
       </div>
-
+    <div id="latestwork-msg" class="animated fadeInUp unselectable purple-gradient" style="font-size: 3vh; width: 30vw; margin: auto; margin-top: 5vh;"> Przejrzyj najnowsze prace</div>
+    <div class="animated fadeInUp" id="latest-work-box">
+        <audio id="audio-output" src=""></audio>
+        <button id="prev-btn" style="margin: 0 auto;" class="btn-prev-next">Poprzednia</button>
+        <div class="song-box">
+            <div style="font-size: 2vh; font-weight: bold;text-align: left; margin: 15px; float: left;" id="song-title"> Rosyjskie rytmy  </div> 
+            <button class="unselectable" id="mainpage-play-btn" style="float: right; margin: 25px"> PLAY </button>
+            <div style="clear: both; font-size: 2vh; text-align: left; margin: 15px; margin-top: -2vh;" id="song-author"> Antoni Goles </div>
+            <div style="font-style: italic; font-weight: medium;" id="desc-box">
+                
+                    "This song was made thanks to @testoweoznaczenie"
+            </div>
+        </div>
+        <button id="next-btn" style="margin: 0 auto;" class="btn-prev-next">Następna</button>
+    </div>
 
 </div>
 
@@ -49,5 +62,6 @@
     <script src="./public/static/frontend.js"></script>
     <script src="./public/static/dragbar.js"></script>
     <script src="./public/static/mainPage.js"></script>
+    <script src="./public/static/search.js"></script>
 </body>
 </html>
