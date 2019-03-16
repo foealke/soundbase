@@ -51,7 +51,7 @@ function renderSongs() {
         <div style="font-size: 4vh; font-weight: bold;text-align: left; margin: 15px; float: left;"> 
              `+ value.title +`
         </div>
-        <button class="song-href-btn" style="text-align: center; margin: 15px; font-size: 1.5vw;" class="purple-gradient unselectable">
+        <button data-id='`+key+`' id="btn-`+key+`" class="song-href-btn" style="text-align: center; margin: 15px; font-size: 1.5vw;" class="purple-gradient unselectable">
             Zobacz
         </button>
         <div style="clear: both; font-size: 2vh; text-align: left; margin: 15px; margin-top: -2vh;"> 
@@ -60,7 +60,12 @@ function renderSongs() {
         <div style="font-style: italic; font-weight: medium;">
              ` + value.description + `
         </div>
-    </div>`
+        </div>`
+        $(document).on('click', '#btn-' + key, function(event) {
+            console.log(event.target.dataset.id)
+            localStorage.setItem('songid',event.target.dataset.id)
+            window.location.href = './musicPlayer.html'
+        });
     })
 }
 
@@ -73,4 +78,5 @@ setInterval(function() {
         return
     }
 }, 10)
+
 
