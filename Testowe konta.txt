@@ -1,3 +1,0 @@
-nick: TestowyChlopiec
-email: testowy@email.com
-haslo: andrzej13

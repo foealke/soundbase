@@ -7,10 +7,8 @@
  - Firebase
  - sweetalert2
  - Microphone.js
+ - wavesurfer.js
 
-Current version (11III2019):
-Build 0.1.2b
-
- - Only song browser to make :D
- 
- 
+Current version (17III2019):
+Build 0.9a
+- The app is ready to go :D
