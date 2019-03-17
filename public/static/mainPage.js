@@ -13,12 +13,12 @@ function fmtMSS(s){return(s-(s%=60))/60+(9<s?':':':0')+s}
 function updateAud() {
     var a = fmtMSS(Math.floor(songOut.currentTime))
     var b = fmtMSS(Math.floor(songOut.duration))
-    timebar.innerHTML = a + ' / ' + b
+    timebar.innerHTML = a + ' / ' + songList[currentSongIndex].length
     var time = Math.floor(songOut.currentTime / songOut.duration * 100 )
     songBar.style.width = time.toString() + "%"
 }
 
-setInterval( updateAud, 1 )
+
 
 var isAudioPlaying = false;
 
@@ -45,6 +45,7 @@ document.querySelector('#logout-btn').addEventListener('click', () => {
             a.push(doc.data()) 
         });
         songList = a
+        setInterval( updateAud, 1 )
         songTitle.innerHTML = songList[currentSongIndex].title
         songAuthor.innerHTML = songList[currentSongIndex].authorName
         songDescription.innerHTML = '"' + songList[currentSongIndex].description + '"'

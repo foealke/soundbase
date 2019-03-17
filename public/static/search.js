@@ -58,12 +58,12 @@ function renderSongs() {
              ` + value.authorName + `
         </div>
         <div style="font-style: italic; font-weight: medium;">
-             ` + value.description + `
+             `+ `"` + value.description + `"` + `
         </div>
         </div>`
         $(document).on('click', '#btn-' + key, function(event) {
             console.log(event.target.dataset.id)
-            localStorage.setItem('songid',event.target.dataset.id)
+            localStorage.setItem('songid', event.target.dataset.id)
             window.location.href = './musicPlayer.html'
         });
     })

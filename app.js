@@ -5,8 +5,7 @@ let mainWindow
 
 function createWindow () {
   mainWindow = new BrowserWindow({
-    transparent:true,
-    frame: true,
+    devTools: true,
     width: 1280,
     height: 720,
     minWidth: 1280, 
@@ -17,6 +16,7 @@ function createWindow () {
       nodeIntegration: true
     }
   })
+
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 

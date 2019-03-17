@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SoundBase</title>
+    <script src="./public/static/jquerry.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js@2.2.0/dist/wavesurfer.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
     <link rel="stylesheet" href="./public/static/animate.css">
     <link rel="stylesheet" href="./public/static/style.css">
     <link rel="stylesheet" href="./public/static/overall.css">
@@ -13,31 +16,73 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+    <script>
+        document.addEventListener("keydown", function (e) {
+            if (e.which === 123) {
+                require('remote').getCurrentWindow().toggleDevTools({ mode: 'detach'});
+            } else if (e.which === 116) {
+                location.reload();
+            }
+        });
+    </script>
 </head>
-<body style="margin: 0;">
+<body style="margin: 0; overflow: hidden;">
 <div id="body1">
     <div style="text-align: left; margin: 15px;" id="logout-btn" class="animated fadeInDown unselectable purple-gradient"> <a href="home.html">Wyloguj</a> </div>
     <div style="text-align: left; margin: 15px;" class="animated fadeInDown unselectable purple-gradient"> <a href="mainPage.html">Wróć</a> </div>
-    <div id="music-player-container">
+    
+    <div class="animated fadeInUp" id="music-player-container">
+        <div id="pps-info" style="font-size: 1.5vh;">Zoom: 50 pps</div>
+        <button id="zoom-btn-plus" class="zoom-btn" style="width: 80%; margin: 3px;">+</button>
+        <div id="waveform-box" style="border: 1px solid rgb(149, 35, 140); width: 80%; height: 30%; border-radius: 25px; margin: 0px auto;">
+            <div style="width: 95%; margin: 20px auto;" id="waveform">
+                <div id="loading-spinner" style="margin: 15px auto;" class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+        <button id="zoom-btn-minus" class="zoom-btn" style="width: 80%; margin: 3px;">-</button>
 
+        <div id="song-info-box" style="clear: both; margin-top: 1vh">
+            <div style="font-weight: 100; font-size: 2vh; margin: 15px auto;" id="song-length">
+                <div style="width: 25vw; background-color:rgb(226, 226, 226); height: 3vh; margin: 20px auto;" class='gray-box'></div> 
+            </div>
+            <div style="font-weight: bold; font-size: 4vh; margin: 15px auto;" id="song-title">
+                <div style="width: 25vw; background-color:rgb(226, 226, 226); height: 3vh; margin: 20px auto;" class='gray-box'></div> 
+            </div>
+            <div style="font-weight: 100; margin-top: -2vh; " id="author">
+                <div style="width: 12vw; background-color:rgb(226, 226, 226); height: 3vh; margin: 20px auto; " class='gray-box'></div>
+            </div>
+            <div style="font-style: italic;" id="song-description">
+                <div style="width:40vw; background-color:rgb(226, 226, 226); height: 3vh; margin: 20px auto;" class='gray-box'></div> 
+            </div>
+        </div>
+        <div style="margin-top: 5vh;" id="audio-controller">
+            <button style="border: 1px solid rgb(149, 35, 140); width: 10vw; height: 8vh; border-radius: 8px; background-color: white;" id="backward-btn">
+                <!-- <img style="height: 60%;" src="./public/imgs/backwards.png" alt=""> -->
+            </button>
+            <button style="border: 1px solid rgb(149, 35, 140); width: 10vw; height: 8vh; border-radius: 8px; background-color: white;" id="reapet-btn">
+                <!-- <img style="height: 60%;" src="./public/imgs/reapet.png" alt=""> -->
+            </button>
+            <button style="border: 1px solid rgb(149, 35, 140); width: 10vw; height: 8vh; border-radius: 8px; background-color: white;" id="play-btn">
+                <!-- <img style="height: 60%;" src="./public/imgs/play.png" alt=""> -->
+            </button>
+            <button style="border: 1px solid rgb(149, 35, 140); width: 10vw; height: 8vh; border-radius: 8px; background-color: white;" id="forward-btn">
+                <!-- <img style="height: 60%;" src="./public/imgs/fast-forward.png" alt=""> -->
+            </button> <br>
+            <div style="border: 1px solid rgb(149, 35, 140); width: 15vw; border-radius: 15px; margin: 15px auto;">
+                <label for="customRange1">Głośność:</label>
+                <input style="width: 12vw;" type="range" value="10" min="0" max="10" class="custom-range" id="customRange1">
+            </div>
+        </div>
 
     </div>
-
-
-
-
-
+    
 
 </div>
-
-    <script src="./public/static/dragbar.js"></script>
     <script src="./public/static/querySelectors.js"></script>
     <script src="./public/static/dbconnection.js"></script>
     <script src="./public/static/devMode.js"></script>
-    <script src="./public/static/frontend.js"></script>
-    <script src="./public/static/dragbar.js"></script>
-    <script src="./public/static/mainPage.js"></script>
-    <script src="./public/static/search.js"></script>
+    <script src="./public/static/musicPlayer.js"></script>
 </body>
 </html>

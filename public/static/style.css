@@ -356,3 +356,46 @@ button{
     float: right;
 }
 
+#music-player-container {
+    width: 90vw;
+    height: 85vh;
+    border-radius: 25px;
+    border: 1px solid rgb(149, 35, 140);
+    margin: 0px auto;
+}
+
+#volume::-webkit-slider-thumb {
+    background-color: rgb(138, 26, 138);
+}
+
+#play-btn {
+    background-image: url('../imgs/play.png');
+    background-size: 30%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#reapet-btn {
+    background-image: url('../imgs/reapet.png');
+    background-size: 30%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#forward-btn {
+    background-image: url('../imgs/fast-forward.png');
+    background-size: 30%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#backward-btn {
+    background-image: url('../imgs/backwards.png');
+    background-size: 30%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.zoom-btn {
+    border: 1px solid rgb(149, 35, 140);
+    border-radius: 15px;
+    background-color: white;
+}
