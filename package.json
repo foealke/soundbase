@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "electron": "^4.0.5",
+    "electron-packager": "^13.1.1",
     "screenres": "^2.0.1"
   }
 }

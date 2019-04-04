@@ -8,8 +8,8 @@ function createWindow () {
     devTools: true,
     width: 1280,
     height: 720,
-    minWidth: 1280, 
-    minHeight: 720,
+    minWidth: 1024, 
+    minHeight: 768,
     title: "SoundBase",
     icon: path.join(__dirname, 'icon.png'),
     webPreferences: {
